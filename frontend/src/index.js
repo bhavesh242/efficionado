@@ -13,7 +13,7 @@ const Container = styled.div`
 class App extends React.Component {
     state = initialData
 
-    onDragStart = start =>{
+    onDragStart = start => {
         const homeIndex = this.state.columnOrder.indexOf(start.source.droppableId);
         this.setState({
             homeIndex
@@ -21,7 +21,9 @@ class App extends React.Component {
     }
 
     onDragEnd = result => {
-        this.state.homeIndex = null;
+        this.setState({
+            homeIndex: null
+        })
         const { destination, source, draggableId } = result;
 
         if (!destination) {
@@ -36,7 +38,7 @@ class App extends React.Component {
             return;
         }
 
-        
+
         const start = this.state.columns[source.droppableId];
         const finish = this.state.columns[destination.droppableId];
         //If draggable item shifts location within the same column
@@ -64,13 +66,13 @@ class App extends React.Component {
 
         //Moving to a different column
         const startTaskIds = Array.from(start.taskIds)
-        startTaskIds.splice(source.index,1);
+        startTaskIds.splice(source.index, 1);
         const newStart = {
             ...start,
             taskIds: startTaskIds,
         };
         const finishTaskIds = Array.from(finish.taskIds)
-        finishTaskIds.splice(source.index,0,draggableId);
+        finishTaskIds.splice(source.index, 0, draggableId);
         const newFinish = {
             ...finish,
             taskIds: finishTaskIds,
@@ -92,11 +94,11 @@ class App extends React.Component {
     render() {
         return (
 
-            <DragDropContext 
+            <DragDropContext
                 onDragEnd={this.onDragEnd}
                 onDragStart={this.onDragStart}
-                >
-                
+            >
+
                 <Container>
                     {this.state.columnOrder.map((columnId, index) => {
                         const column = this.state.columns[columnId];
