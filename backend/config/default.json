@@ -1,0 +1,7 @@
+{
+    "Efficionado":{
+        "dbConfig":{
+            "dbName": "mongodb+srv://epicuser:aogGOoPFqcoWIAt4@clustere.bwv3l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+        }
+    }
+}
