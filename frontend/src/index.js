@@ -5,6 +5,7 @@ import Column from './column';
 import '@atlaskit/css-reset';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
+import CreateCards from './createCards';
 
 const Container = styled.div`
     display: flex;
@@ -106,6 +107,7 @@ class App extends React.Component {
                         const isDropDisabled = index < this.state.homeIndex;
                         return <Column key={column.id} column={column} tasks={tasks} isDropDisabled={isDropDisabled} />;
                     })}
+                    <CreateCards />
                 </Container>
             </DragDropContext>
 
