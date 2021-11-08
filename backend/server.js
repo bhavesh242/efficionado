@@ -29,7 +29,7 @@ mongoose.connect(dbConnectionString, {
         console.log("MongoDB Could not be connected", err);
     });
 
-
+console.log(config.get("Efficionado.jwtSecret"))
 //Define Routes
 app.use("/users", require("./routes/users"));
 app.use("/todos", require("./routes/todo"));
