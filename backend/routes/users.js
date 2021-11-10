@@ -30,14 +30,14 @@ router.post("/register", async (req, res) => {
         const existingUser = await User.findOne({ userName: userName });
 
         if (existingUser) {
-            return responseBuilder(res, 400, { msg: "This username is already taken!" });
+            return responseBuilder(res, 400, { msg: 'This username is already taken!' });
         }
 
         //Encrypting password
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
 
-        //Store in form of user object based on the Schema model
+        //  Store in form of user object based on the Schema model
 
 
         const newUser = new User(
