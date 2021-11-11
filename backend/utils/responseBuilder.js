@@ -1,1 +1,1 @@
-module.exports = responseBuilder = (response, errorCode, body) => response.status(errorCode).json(body);
+module.exports = (response, errorCode, body) => response.status(errorCode).json(body);
