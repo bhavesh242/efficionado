@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
 
     // Check if the entered password hashes match
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return responsBuilder(res, 400, { msg: 'Invalid credentials.' });
+    if (!isMatch) return responseBuilder(res, 400, { msg: 'Invalid credentials.' });
 
     // Create a JWT based on application Secret
     const token = jwt.sign({ id: user._id }, config.get('Efficionado.jwtSecret'));
@@ -97,7 +97,7 @@ router.post('/login', async (req, res) => {
 router.delete('/delete', auth, async (req, res) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.user);
-    return responsBuilder(res, 200, deletedUser);
+    return responseBuilder(res, 200, deletedUser);
   } catch (err) {
     return responseBuilder(res, 500, { error: err.message });
   }
